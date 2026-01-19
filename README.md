@@ -2,25 +2,25 @@
 
 A real-time dashboard for monitoring e-commerce transactions and flagging suspicious activity using Google Gemini AI.
 
-## 🚀 Features
+## Features
 - **Real-time Data**: Live transaction stream via WebSockets.
 - **AI Fraud Detection**: detailed risk analysis using Google Gemini.
 - **Interactive Dashboard**: Live tables, risk score charts, and status indicators.
 - **Authentication**: Secure JWT-based login system.
 - **Responsive Design**: Built with React and modern CSS.
 
-## 🔑 Login Credentials
+##  Login Credentials
 Use these credentials to access the dashboard:
 - **Username**: `admin`
 - **Password**: `admin`
 
-## 🛠️ Tech Stack
+##  Tech Stack
 - **Frontend**: React, Redux Toolkit, Chart.js, Vite
 - **Backend**: Node.js, Express, Socket.IO
 - **Database**: MongoDB Atlas
 - **AI**: Google Gemini API
 
-## 🏃‍♂️ Run Locally
+##  Run Locally
 
 ### Option 1: Docker (Recommended)
 ```bash
