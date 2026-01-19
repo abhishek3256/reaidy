@@ -27,6 +27,10 @@ async function analyzeTransactionRisk(transactionData) {
         } catch (error) {
             console.error("Gemini Analysis Error:", error);
             // Fallback to mock if error
+            return {
+                riskScore: Math.floor(Math.random() * 100),
+                riskFactors: ['Mock Risk Factor (API Error Fallback)']
+            };
         }
     }
 
