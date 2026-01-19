@@ -8,7 +8,12 @@ const Login = ({ onLogin }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+        // Remove trailing slash if present to avoid double slash //api
+        const rawUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+        const API_URL = rawUrl.replace(/\/$/, '');
+
+        console.log("Attempting login to:", `${API_URL}/api/login`); // Debug log
+
         try {
             const res = await axios.post(`${API_URL}/api/login`, { username, password });
             onLogin(res.data.token);
