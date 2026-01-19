@@ -8,8 +8,9 @@ const Login = ({ onLogin }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
         try {
-            const res = await axios.post('/api/login', { username, password });
+            const res = await axios.post(`${API_URL}/api/login`, { username, password });
             onLogin(res.data.token);
         } catch (err) {
             setError('Invalid credentials (try admin/admin)');

@@ -9,11 +9,13 @@ import { io } from 'socket.io-client';
 const Dashboard = ({ token }) => {
     const dispatch = useDispatch();
 
+    const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
     useEffect(() => {
         // Initial Fetch
         const fetchTransactions = async () => {
             try {
-                const res = await axios.get('/api/transactions', {
+                const res = await axios.get(`${API_URL}/api/transactions`, {
                     headers: { 'x-auth-token': token }
                 });
                 dispatch(setTransactions(res.data));
@@ -24,7 +26,7 @@ const Dashboard = ({ token }) => {
         fetchTransactions();
 
         // Socket Connection
-        const socket = io('/', { // Proxy handles / -> localhost:5000
+        const socket = io(API_URL, {
             transports: ['websocket']
         });
 
