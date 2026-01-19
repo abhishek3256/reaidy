@@ -13,7 +13,17 @@ const Login = ({ onLogin }) => {
             const res = await axios.post(`${API_URL}/api/login`, { username, password });
             onLogin(res.data.token);
         } catch (err) {
-            setError('Invalid credentials (try admin/admin)');
+            console.error("Login Error:", err);
+            if (err.response) {
+                // Server responded with a status code other than 2xx
+                setError(`Login Failed: ${err.response.data}`);
+            } else if (err.request) {
+                // Request was made but no response was received
+                setError('Network Error: Cannot reach server. Is it running?');
+            } else {
+                // Something else happened
+                setError(`Error: ${err.message}`);
+            }
         }
     };
 
